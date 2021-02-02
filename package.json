@@ -13,20 +13,21 @@
   "devDependencies": {},
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/title-network/rpc-explorer.git"
+    "url": "git+https://github.com/Clashic-Services/rpc-explorer.git"
   },
   "keywords": [
-    "TitleNetwork",
-    "TNET",
+    "Bitcoin Clashic",
+    "Clashic",
+    "BCHC",
     "RPC",
     "Explorer"
   ],
-  "author": "TitleNetwork",
+  "author": "Clashic.Services",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/title-network/rpc-explorer/issues"
+    "url": "https://github.com/Clashic-Services/rpc-explorer/issues"
   },
-  "homepage": "https://github.com/title-network/rpc-explorer#readme",
+  "homepage": "https://github.com/Clashic-Services/rpc-explorer#readme",
   "dependencies": {
     "bitcoin-core": "^2.0.0",
     "bitcoinjs-lib": "^5.0.5",

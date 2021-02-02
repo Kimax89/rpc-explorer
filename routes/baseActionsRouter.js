@@ -198,7 +198,7 @@ router.get("/api/current-supply-sats", function apiCurrentSupplySats(req, res) {
 });
 
 
-function getTNETInfo(cb) {
+function getBCHCInfo(cb) {
         var data = {};
         // Get: Current Supply
         getTotalCoins(function(err, totalcoins) {
@@ -213,11 +213,11 @@ function getTNETInfo(cb) {
                  return cb(500);
               }
               data['difficulty'] = diff;
-	      // Get: exchange rate TNET_BTC (southXchange)
+	      // Get: exchange rate BCHC_BTC (southXchange)
 	      if (!(global.exchangeRate > 0)) {
                  return cb(500);
               }
-              data['tnet_btc'] = global.exchangeRate;
+              data['bchc_btc'] = global.exchangeRate;
               // Get: exchange rate BTC_USD (CMC)
               request.get('https://api.coinmarketcap.com/v2/ticker/1/?convert=USD')
 		.end(function (err, res) {
@@ -227,7 +227,7 @@ function getTNETInfo(cb) {
                     }
 		    var market = res.body.data.quotes.USD.price;
 		    data['btc_usd'] = market;
-                    data['btcc_usd'] = parseFloat((parseFloat(market, 10) * parseFloat(data['tnet_btc'], 10)).toFixed(2), 10);
+                    data['bchc_usd'] = parseFloat((parseFloat(market, 10) * parseFloat(data['bchc_btc'], 10)).toFixed(2), 10);
 		    // FINNN
                     data['lastupdate'] = parseInt(Date.now() / 1e3, 10);
                     cb(null, data);
@@ -240,7 +240,7 @@ function getTNETInfo(cb) {
 var lastTotalInfoCacheTime = Date.now();
 var lastTotalCache = null;
 var totalCacheLifetimeSeconds = 10; // seconds
-function getCacheTNETInfo(cb) {
+function getCacheBCHCInfo(cb) {
     if (lastTotalCache !== null) {
         if (Date.now() - lastTotalInfoCacheTime < totalCacheLifetimeSeconds * 1000) {
 	     // alive
@@ -248,7 +248,7 @@ function getCacheTNETInfo(cb) {
         }
    }
 
-   getTNETInfo(function(err, info) {
+   getBCHCInfo(function(err, info) {
       if (!err) {
         lastTotalCache = info;
         lastTotalInfoCacheTime = Date.now();
@@ -258,7 +258,7 @@ function getCacheTNETInfo(cb) {
 }
 
 router.get("/api/get-info", function apiGetInfo(req, res) {
-        getCacheTNETInfo(function apiGetInfoInner(err, info) {
+        getCacheBCHCInfo(function apiGetInfoInner(err, info) {
             if (err) {
                 return res.status(500).send("{}");
             }
@@ -323,7 +323,7 @@ router.get("/mempool-summary", function(req, res) {
 				res.render("mempool-summary");
 			});
 		}).catch(function(err) {
-			res.locals.userMessage = "Unable to connect to TitleNetwork Node at " + env.rpc.host + ":" + env.rpc.port;
+			res.locals.userMessage = "Unable to connect to Bitcoin Clashic Node at " + env.rpc.host + ":" + env.rpc.port;
 			res.render("mempool-summary");
 		});
 	} else {
@@ -439,7 +439,7 @@ router.get("/blocks", function(req, res) {
 			res.render("blocks");
 		});
 	}).catch(function(err) {
-		res.locals.userMessage = "Unable to connect to TitleNetwork Node at " + env.rpc.host + ":" + env.rpc.port;
+		res.locals.userMessage = "Unable to connect to Bitcoin Clashic Node at " + env.rpc.host + ":" + env.rpc.port;
 
 		res.render("blocks");
 	});

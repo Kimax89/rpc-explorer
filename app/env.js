@@ -1,7 +1,7 @@
 module.exports = {
 	cookiePassword: "0x000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f",
 	demoSite: false,
-	coin: "TNET",
+	coin: "BCHC",
 
 	listen:{
 		port:5002
@@ -51,9 +51,9 @@ module.exports = {
 	ipWhitelistForRpcCommands:/^(127\.0\.0\.1)?(\:\:1)?$/,
 
 	donationAddresses:{
-		coins:["TNET"],
+		coins:["BCHC"],
 		
-		"TNET":{address:"15SghANf14BiH6MDV7ZikD8jmjBkWwYq7e", urlPrefix:"tnet:"}
+		"BCHC":{address:"1Kimax1hiVJozfDUtkuFU3xHXC3T3GEUiZ", urlPrefix:"clashic:"}
 	},
 
 	development: false,
