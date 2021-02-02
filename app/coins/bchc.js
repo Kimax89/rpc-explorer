@@ -15,7 +15,7 @@ function postForkBlockReward(blockHeight) {
 module.exports = {
 	name:"Bitcoin Clashic",
 	nameShort: "BCHC",
-	logoUrl:"/img/logo/bchc.png",
+	logoUrl:"/img/logo/bchc.svg",
 	siteTitle:" Bitcoin Clashic (BCHC) Explorer",
 	siteDescriptionHtml:"<b>BCHC Explorer</b> is <a href='https://github.com/Bitcoin-Clashic/rpc-explorer). If you run your own [Bitcoin Clashic Full Node](https://github.com/Bitcoin-Clashic/wallet-official/releases), **BCHC Explorer** can easily run alongside it, communicating via RPC calls. See the project [ReadMe](https://github.com/Bitcoin-Clashic/rpc-explorer) for a list of features and instructions for running.",
 	nodeTitle:"Bitcoin Clashic Full Node",
